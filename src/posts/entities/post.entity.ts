@@ -5,36 +5,36 @@ import {
   DataType,
   ForeignKey,
   BelongsTo,
-} from 'sequelize-typescript';
-import { User } from 'src/users/entities/user.entity';
+} from 'sequelize-typescript'
+import { User } from 'src/users/entities/user.entity'
 
 @Table
 export class Post extends Model<Post> {
   @Column
-  title: string;
+  title: string
 
   @Column
-  body: string;
+  body: string
 
   @Column(DataType.ARRAY(DataType.STRING))
-  tags: string[];
+  tags: string[]
 
   @Column(DataType.ARRAY(DataType.STRING))
-  imageUrls: string[];
+  imageUrls: string[]
 
   @Column
-  isPrivate: boolean;
+  isPrivate: boolean
 
   @ForeignKey(() => User)
   @Column
-  userId: number;
+  userId: number
 
   @BelongsTo(() => User)
-  user: User;
+  user: User
 
   @Column
-  deletedAt: Date;
+  deletedAt: Date
 
   @Column(DataType.DATE)
-  ttl: Date;
+  ttl: Date
 }
