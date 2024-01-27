@@ -1,18 +1,18 @@
-import { Table, Column, Model, Unique, Default } from 'sequelize-typescript';
+import { Table, Column, Model, Unique, Default } from 'sequelize-typescript'
 
-const validGenders = ['MALE', 'FEMALE'];
+const validGenders = ['MALE', 'FEMALE']
 
 @Table
 export class User extends Model {
   @Column
-  name: string;
+  name: string
 
   @Unique
   @Column
-  email: string;
+  email: string
 
   @Column
-  password: string;
+  password: string
 
   @Column({
     validate: {
@@ -24,5 +24,5 @@ export class User extends Model {
   })
   @Default('MALE')
   @Column // Set a default value if needed
-  gender: string;
+  gender: string
 }

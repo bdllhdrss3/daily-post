@@ -1,11 +1,11 @@
-import * as dotenv from 'dotenv';
-import { Module } from '@nestjs/common';
-import { UserService } from './users.service';
-import { UserController } from './users.controller';
-import { JwtModule } from '@nestjs/jwt';
-import { UsersRepository } from './users.providers';
+import * as dotenv from 'dotenv'
+import { Module } from '@nestjs/common'
+import { UserService } from './users.service'
+import { UserController } from './users.controller'
+import { JwtModule } from '@nestjs/jwt'
+import { UsersRepository } from './users.providers'
 
-dotenv.config();
+dotenv.config()
 
 @Module({
   imports: [

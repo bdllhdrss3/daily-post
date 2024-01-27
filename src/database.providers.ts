@@ -16,7 +16,13 @@ export const databaseProviders = [
         port: parseInt(process.env.DB_PORT, 10),
         username: process.env.DB_USER,
         password: process.env.DB_PASS,
-        database: process.env.DB_NAME_PRODUCTION,
+        database: process.env.DB_NAME,
+        dialectOptions: {
+          ssl: {
+            require: true,
+            rejectUnauthorized: false, // This line is added to accept self-signed certificates
+          },
+        },
       });
       sequelize.addModels([User, Post]);
       await sequelize.sync();

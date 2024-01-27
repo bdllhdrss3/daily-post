@@ -4,26 +4,24 @@ import {
   IsBoolean,
   IsNumber,
   IsOptional,
-} from 'class-validator';
+} from 'class-validator'
 
 export class CreatePostDto {
   @IsString()
-  title: string;
+  title: string
 
   @IsString()
-  body: string;
+  body: string
 
   @IsArray()
-  tags: string[];
+  tags: string[]
 
   @IsArray()
-  images: object[];
+  images: object[]
 
   @IsOptional()
-  @IsBoolean()
-  isPrivate: boolean;
+  isPrivate: boolean | any
 
   @IsOptional()
-  @IsNumber()
-  ttl: number | null;
+  ttl: number | null
 }
