@@ -7,7 +7,8 @@
 
 
 SYSTEM REQUIREMENTS
-The requirements:  
+
+
 - basic information for a user profile  
 - posts are public unless marked private  
 - only the original poster can see their own private posts  
@@ -16,15 +17,20 @@ The requirements:
 - when a user deletes a post, it can be retrieved if the user makes a request before 24 hours elapse  
 - A post can have an image or set of images  
 - A user can post a disappearing message that "disappears" after a configurable amount of time.
-- 
+
+ 
 ***hosted  application on render free tier(takes long to load first time)***
 https://daily-qgpt.onrender.com/
 ## AUTHENTICATION
 CREATE ACCOUNT:
 
+
 API: < host >/users/signup
+
 e.g https://daily-qgpt.onrender.com/users/signup
+
 **POST**
+
 body:
 
     {
@@ -47,9 +53,13 @@ incase email exists
     {"success":false,"message":"Email is already in use"}
 
 LOGIN
+
 API: < host >/users/users/login
+
 e.g https://daily-qgpt.onrender.com/users/login
+
 **POST**
+
 To login user use this endpoint
 
 body
@@ -67,7 +77,7 @@ OK response
     	"token":  "eyJhbGciOiJIUzI1NiIsInR5c....."
     }
 returns user token to use in subsequent requests
-if user doesnt exist
+if user already exist
 
     {
     	"success":  false,
@@ -88,8 +98,12 @@ invalid password reponse
 
 
 **TO GET ALL USERS IN APP**
+
 API: < host >/users/users/users
+
 e.g https://daily-qgpt.onrender.com/users/users
+
+
 **GET**
 
 Response
@@ -108,8 +122,11 @@ Response
 ## POSTS
 
 CREATING A POST
+
 API: < host >/users/posts
+
 e.g https://daily-qgpt.onrender.com/posts
+
 **POST**
 
 BODY
@@ -155,9 +172,13 @@ ttl:  shows when post will expire
 deletedAt : shows when post was deleted(soft delete) else its null
 
 GET POSTS
+
 API: < host >/users/posts
+
 e.g https://daily-qgpt.onrender.com/posts
+
 **GET**
+
 this gets all posts excluding private posts which dont belong to you.
 
 Response
@@ -191,44 +212,52 @@ Response
 
 
 GETTING YOU OWN POSTS
+
 API: < host >/users/posts
+
 e.g https://daily-qgpt.onrender.com/posts
+
 **GET**
+
 this gets all your posts including private posts and soft deleted posts 
+
     {
-	    "posts":  [
-		    {
-		    "id":  35,
-		    "title":  "man u",
-		    "body":  "halooaoaoa",
-		    "tags":  ["kaka"],
-		    "imageUrls":  [
-			    "http://res.cloudinary.com/business-online/image/upload/v1706451110/dkirkzqhqcgimejdd0yz.png",
-			    "http://res.cloudinary.com/business-online/image/upload/v1706451112/uqvtp9qklnyugotgqjc2.png"
-		    ],
-		    "isPrivate":  true,
-		    "userId":  6,
-		    "deletedAt":  null,
-		    "ttl":  "2024-01-28T14:14:52.137Z",
-		    "createdAt":  "2024-01-28T14:11:52.138Z",
-		    "updatedAt":  "2024-01-28T14:11:52.138Z",
-		    "user":  {
-			    "id":  6,
-			    "name":  "jan",
-			    "email":  "abc@ssk.com"
-			    "gender":  "MALE"
-		    }
-		    },
-	    ]
+        "posts":  [
+    	    {
+    	    "id":  35,
+    	    "title":  "man u",
+    	    "body":  "halooaoaoa",
+    	    "tags":  ["kaka"],
+    	    "imageUrls":  [
+    		    "http://res.cloudinary.com/business-online/image/upload/v1706451110/dkirkzqhqcgimejdd0yz.png",
+    		    "http://res.cloudinary.com/business-online/image/upload/v1706451112/uqvtp9qklnyugotgqjc2.png"
+    	    ],
+    	    "isPrivate":  true,
+    	    "userId":  6,
+    	    "deletedAt":  null,
+    	    "ttl":  "2024-01-28T14:14:52.137Z",
+    	    "createdAt":  "2024-01-28T14:11:52.138Z",
+    	    "updatedAt":  "2024-01-28T14:11:52.138Z",
+    	    "user":  {
+    		    "id":  6,
+    		    "name":  "jan",
+    		    "email":  "abc@ssk.com"
+    		    "gender":  "MALE"
+    	    }
+    	    },
+        ]
     }
+
 
 DELETING OWN POST
 
 
 API: < host >/users/posts/:post:id
+
 e.g https://daily-qgpt.onrender.com/posts/3
+
 **DELETE**
-https://daily-qgpt.onrender.com/posts/3
+
 
 Response
 
@@ -249,9 +278,13 @@ if you dont won the post or post doesnt exist
 
 
 UPDATING PRIVACY OF YOUR POST
+
 API: < host >/users/posts/togglePrivacy/:post:id
+
 e.g https://daily-qgpt.onrender.com/posts/togglePrivacy/4
+
 **PATCH**
+
 
 This changes post privacy to public and vice versa.
 
@@ -279,9 +312,6 @@ if you try editing non existing post or post you dont own you get error
     	    "error":  "Not Found",
     	    "statusCode":  404
         }
-
-
-
 
 
 
